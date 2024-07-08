@@ -47,7 +47,7 @@ class ConsoleEventWriter(EventWriter):
                     continue
                 current_date = date(year, month, day)
                 if current_date in event_counts:
-                    new_line += f"{day:>{2}}[{event_counts[current_date]}] " + (1 - len(str(event_counts[current_date])))*" "
+                    new_line += f"{day:>{2}}[{event_counts[current_date]}]" + (2 - len(str(event_counts[current_date])))*" "
                 else:
                     new_line += f"{day:>{2}}" + 4 * ' '
 
