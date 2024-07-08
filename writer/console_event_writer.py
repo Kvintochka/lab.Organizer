@@ -37,19 +37,19 @@ class ConsoleEventWriter(EventWriter):
         month_event_count = sum(count for event_date, count in event_counts.items() if event_date.month == month)
 
         month_name = cal.month_name[month]
-        event_calendar.append(f"{month_name} ({month_event_count}) {year}\n".center(38))
-        event_calendar.append("Mo    Tu    We    Th    Fr    Sa    Su")
+        event_calendar.append(f"{month_name} ({month_event_count}) {year}".center(50))
+        event_calendar.append("Mo      Tu      We      Th      Fr      Sa      Su")
         for week in cal_mon:
             new_line = ""
             for day in week:
                 if not day:
-                    new_line += " " * 6
+                    new_line += " " * 8
                     continue
                 current_date = date(year, month, day)
                 if current_date in event_counts:
-                    new_line += f"{day:>{2}}[{event_counts[current_date]}]" + (2 - len(str(event_counts[current_date])))*" "
+                    new_line += f"{day:>{2}}[{event_counts[current_date]}]" + (4 - len(str(event_counts[current_date])))*" "
                 else:
-                    new_line += f"{day:>{2}}" + 4 * ' '
+                    new_line += f"{day:>{2}}" + 6 * ' '
 
             event_calendar.append(new_line.rstrip())
         event_calendar.append("\n")
